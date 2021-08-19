@@ -36,3 +36,19 @@ const changeSlide = (direction) => {
 slideRight.style.transform = `translateY(-${activeSlideIndex * sliderHeight}px)`;
 slideLeft.style.transform = `translateY(${activeSlideIndex * sliderHeight}px)`;
 };
+
+addEventListener("keydown", function(event) {
+    if (event.key == 'ArrowUp')
+        changeSlide('up')
+    });
+
+addEventListener("keydown", function(event) {
+    if (event.key == 'ArrowDown')
+        changeSlide('down')
+    });
+
+addEventListener("wheel", event => {
+    const delta = Math.sign(event.deltaY);
+    if (delta > 0) changeSlide('up')
+    else changeSlide('down')
+});
